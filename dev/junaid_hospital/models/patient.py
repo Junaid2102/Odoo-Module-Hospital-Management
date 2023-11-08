@@ -14,6 +14,29 @@ class HospitalPatient(models.Model):
     history = fields.Text(string='History', required=True, tracking=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('others', 'Others')], string='Gender', tracking=True)
     capitalized_name = fields.Char(string='Capitalized Name', compute='compute_capitalized_name', store=True)
+    # ref = fields.Char(string='Reference', default=lambda self: _('New'))
+    #
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     for vals in vals_list:
+    #         vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
+    #     return super(HospitalPatient, self).create(vals_list)
+
+    # ref = fields.Char(string='Reference')
+    #
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     for vals in vals_list:
+    #         if 'ref' not in vals or not vals['ref']:
+    #             vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
+    #     return super(HospitalPatient, self).create(vals_list)
+
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     for vals in vals_list:
+    #         if not vals.get('ref'):
+    #             vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
+    #     return super(HospitalPatient, self).create(vals_list)
 
     @api.constrains('is_child', 'age')
     def check_child_age(self):
