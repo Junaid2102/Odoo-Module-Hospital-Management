@@ -8,11 +8,16 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="is_child"/>
                         <field name="age"/>
+                        <field name="is_child"/>
                         <field name="gender"/>
+                        <field name="history"/>
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
             </form>
         </field>
     </record>
@@ -24,6 +29,7 @@
                 <field name="name"/>
                 <field name="age"/>
                 <field name="gender"/>
+                <field name="history"/>
             </tree>
         </field>
     </record>
